@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import {useRef} from "react";
 import "./login.css";
-import axios from "axios";
+import { axiosInstance } from "../../../config";
 
 export default function Login() {
   const userRef = useRef();
@@ -14,7 +14,7 @@ export default function Login() {
     e.preventDefault();
     dispatch({type:"LOGIN_START"});
     try{
-        const res = await axios.post("/auth/login",{
+        const res = await axiosInstance.post("/auth/login",{
           username: userRef.current.value,
           password: passwordRef.current.value,
 
